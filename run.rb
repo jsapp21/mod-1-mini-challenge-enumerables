@@ -7,19 +7,36 @@ spicy_foods = [
 ]
 
 def print_spicy_foods(spicy_foods)
-
+  spicy_foods.map do |row|
+      name = row[:name]
+      cuisine = row[:cuisine]
+      print "#{name} (#{cuisine}) | Heat Level:"
+      heat = row[:heat_level].times do |i|
+        print "🌶 "
+      end
+  end 
 end
 
 def get_names(spicy_foods)
-
+  spicy_foods.map do |row|
+    row[:name]
+  end
 end
 
 def spiciest_foods(spicy_foods)
-
+  spicy_foods.map do |row|
+    if row[:heat_level] > 5
+      row 
+    end
+  end
 end
 
 def get_spicy_food_by_cuisine(spicy_foods, cuisine)
-
+  spicy_foods.find do |x|
+    if x[:cuisine] == cuisine
+      x 
+    end
+  end 
 end
 
 # BONUS Deliverables
