@@ -7,13 +7,14 @@ spicy_foods = [
 ]
 
 def print_spicy_foods(spicy_foods)
-  spicy_foods.map do |row|
+  spicy_foods.each do |row|
       name = row[:name]
       cuisine = row[:cuisine]
-      print "#{name} (#{cuisine}) | Heat Level:"
-      heat = row[:heat_level].times do |i|
+      print "#{name} (#{cuisine}) | Heat Level:" + " "
+      heat = row[:heat_level].times do |i| 
         print "🌶 "
       end
+      print "\n"
   end 
 end
 
@@ -24,7 +25,7 @@ def get_names(spicy_foods)
 end
 
 def spiciest_foods(spicy_foods)
-  spicy_foods.map do |row|
+  spicy_foods.select do |row|
     if row[:heat_level] > 5
       row 
     end
@@ -41,11 +42,23 @@ end
 
 # BONUS Deliverables
 def print_spiciest_foods(spicy_foods)
+  spicy_foods.select do |row|
+    if row[:heat_level] > 5
+      print "#{row[:name]} (#{row[:cuisine]}) | Heat Level:" + " "
+        row[:heat_level].times do |i| 
+          print "🌶 "
+        end
+      print "\n" 
+    end
+  end
+end 
 
-end
 
 def average_heat_level(spicy_foods)
-
+  elements = spicy_foods.map do |x| 
+    x[:heat_level] 
+  end 
+  elements.sum / spicy_foods.size
 end
 
 # Use this to test your methods
